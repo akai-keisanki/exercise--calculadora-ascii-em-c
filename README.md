@@ -51,17 +51,31 @@ Assim, é possível prover qualquer número, decimal ou não que não supere o l
 Com o resultado obtido, o programa pergunta se deseja fazer uma nova operação.
 É necessário responder com um único caractere: `s` para voltar ao menu e fazer uma nova operação ou `n` para sair do programa e voltar ao terminal.
 
-# Estrutura
+## Estrutura
 
 Este projeto é muito simples. Há somente um arquivo de script e alguns arquivos adicionais para o GitHub.
 Confira:
   
-  ```
-  exercise--calculadora-ascii-em-c/  
-  │── .gitignore
-  │── LICENSE
-  │── main.c
-  │── README.md
-  └── assets/  
-      └── print.png  
-  ```
+```
+exercise--calculadora-ascii-em-c/  
+│── .gitignore
+│── LICENSE
+│── main.c
+│── README.md
+└── assets/  
+    └── print.png  
+```
+
+- O `.gitignore` é puramente usado para ignorar arquivos que surgem durante o desenvolvimento e que não devem ser enviados à núvem.
+
+- `LICENSE` contém a licença do projeto.
+
+- A script `main.c` contém todo o código fonte do projeto.
+
+- Este arquivo é o `README.md`. Ele adiciona informações sobre o repositório e o projeto.
+
+- `assets/` contém todos os arquivos de mídia ou de informação que não têm uma função sozinhos. Estes são usados pelo resto do repositório.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License. Para mais detalhes, q. v. [o arquivo `LICENSE`](LICENSE) deste repositório.

@@ -76,13 +76,21 @@ menu (void)
 	printf("Selecione uma operacao:\n1. Adicao\n2. Subtracao\n3. Multiplicacao\n4. Divisao\n5. Sair\n");
 
 	printf("Opcao: ");
-	scanf("%hhu", &op);
+	if (scanf("%hhu", &op) != 1)
+	{
+		printf("Por favor, insira um número válido.\n")
+		return menu();
+	}
 
 	switch (exec_op(op))
 	{
 	case 0: break;
 	case 1: return 0;
-	case -1: return -1;
+
+	case -1:
+		printf("Por favor, insira um número entre 1 e 5.\n")
+		return menu();
+
 	default: return -16;
 	}
 

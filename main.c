@@ -2,7 +2,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define GOODBYE printf("Obrigado por usar a calculadora! Ate a proxima.\n")
+#define GOODBYE printf("Obrigado por usar a calculadora! Até a próxima.\n")
+#define ERRO_DE_NUMERO printf("Erro: Por favor, insira um número válido.\n")
 
 exec_op (uint8_t op)
 {
@@ -15,10 +16,20 @@ exec_op (uint8_t op)
 
 	double a, b;
 
-	printf("Digite o primeiro numero: ");
-	scanf("%lf", &a);
-	printf("Digite o segundo numero: ");
-	scanf("%lf", &b);
+	printf("Digite o primeiro número: ");
+	if (scanf("%lf", &a) != 1)
+	{
+		ERRO_DE_NUMERO;
+		exec_op(op);
+	}
+
+	printf("Digite o segundo némero: ");
+	
+	if (scanf("%lf", &b) != 1)
+	{
+		ERRO_DE_NUMERO;
+		exec_op(op);
+	}
 
 	switch (op)
 	{
@@ -34,7 +45,7 @@ exec_op (uint8_t op)
 	case 4:
 		if (b == 0.0)
 		{
-			printf("Resultado: %lf / %lf = ?\n", a, b);
+			printf("Erro: Por favor, não calcular divisões por 0.");
 			break;
 		}
 		printf("Resultado: %lf / %lf = %lf\n", a, b, a / b);
@@ -48,7 +59,7 @@ menu_continue (void)
 {
 	char c;
 
-	printf("Deseja realizar outra operacao? (s/n): ");
+	printf("Deseja realizar outra operação? (s/n): ");
 	scanf(" %c", &c);
 
 	switch (c)
@@ -73,12 +84,12 @@ menu (void)
 	uint8_t op;
 
 	printf("===============================\n   Calculadora Simples\n===============================\n");
-	printf("Selecione uma operacao:\n1. Adicao\n2. Subtracao\n3. Multiplicacao\n4. Divisao\n5. Sair\n");
+	printf("Selecione uma operação:\n1. Adição\n2. Subtração\n3. Multiplicação\n4. Divisão\n5. Sair\n");
 
-	printf("Opcao: ");
+	printf("Opção: ");
 	if (scanf("%hhu", &op) != 1)
 	{
-		printf("Por favor, insira um número válido.\n")
+		ERRO_DE_NUMERO;
 		return menu();
 	}
 
@@ -88,7 +99,7 @@ menu (void)
 	case 1: return 0;
 
 	case -1:
-		printf("Por favor, insira um número entre 1 e 5.\n")
+		printf("Erro: Por favor, insira um número entre 1 e 5.\n")
 		return menu();
 
 	default: return -16;

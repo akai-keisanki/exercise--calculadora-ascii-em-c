@@ -99,7 +99,7 @@ menu (void)
 	case 1: return 0;
 
 	case -1:
-		fprintf(stderr, "Erro: Por favor, insira um número entre 1 e 5.\n")
+		fprintf(stderr, "Erro: Por favor, insira um número entre 1 e 5.\n");
 		return menu();
 
 	default: return -16;

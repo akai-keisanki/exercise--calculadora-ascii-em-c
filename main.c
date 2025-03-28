@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 #define GOODBYE printf("Obrigado por usar a calculadora! Até a próxima.\n")
-#define ERRO_DE_NUMERO printf("Erro: Por favor, insira um número válido.\n")
+#define ERRO_DE_NUMERO fprintf(stderr, "Erro: Por favor, insira um número válido.\n")
 
 exec_op (uint8_t op)
 {
@@ -23,7 +23,7 @@ exec_op (uint8_t op)
 		exec_op(op);
 	}
 
-	printf("Digite o segundo némero: ");
+	printf("Digite o segundo número: ");
 	
 	if (scanf("%lf", &b) != 1)
 	{
@@ -45,7 +45,7 @@ exec_op (uint8_t op)
 	case 4:
 		if (b == 0.0)
 		{
-			printf("Erro: Por favor, não calcular divisões por 0.");
+			fprintf(stderr, "Erro: Divisão por zero não é permitida.");
 			break;
 		}
 		printf("Resultado: %lf / %lf = %lf\n", a, b, a / b);
@@ -84,7 +84,7 @@ menu (void)
 	uint8_t op;
 
 	printf("===============================\n   Calculadora Simples\n===============================\n");
-	printf("Selecione uma operação:\n1. Adição\n2. Subtração\n3. Multiplicação\n4. Divisão\n5. Sair\n");
+	printf("Escolha uma operação:\n1. Adição\n2. Subtração\n3. Multiplicação\n4. Divisão\n5. Sair\n");
 
 	printf("Opção: ");
 	if (scanf("%hhu", &op) != 1)
@@ -99,7 +99,7 @@ menu (void)
 	case 1: return 0;
 
 	case -1:
-		printf("Erro: Por favor, insira um número entre 1 e 5.\n")
+		fprintf(stderr, "Erro: Por favor, insira um número entre 1 e 5.\n")
 		return menu();
 
 	default: return -16;

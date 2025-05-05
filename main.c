@@ -12,7 +12,7 @@ exec_op (uint8_t op)
 		GOODBYE;
 		return 1;
 	}
-	if (op > 5) return -1;
+	if (op > 5 || op == 0) return -1;
 
 	double a, b;
 
